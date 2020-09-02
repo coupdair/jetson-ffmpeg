@@ -41,3 +41,17 @@ L4T Multimedia API for ffmpeg
 **example**
 
     ffmpeg -i input_file -c:v h264_nvmpi <output.mp4>
+
+**example HD**
+
+    #H264 encode using nvmpi [speed=4.7x (180% CPU) NVenc 192-512MHz, NVdec OFF]
+    ffmpeg -i input_file.mpg -c:v h264_nvmpi output.mp4
+
+    #MPEG2 decode, H264 encode (both using nvmpi) [speed=3.1x (130% CPU) NVenc 716MHz, NVdec 716MHz]
+    ffmpeg -c:v mpeg2_nvmpi -i input_file.mpg -c:v h264_nvmpi output.mp4
+
+    #MPEG2 decode, H264 encode (both using nvmpi) croping HD
+    ffmpeg -c:v mpeg2_nvmpi -i input_file.mpg -c:v h264_nvmpi -vf crop=1920:800:0:140 -vb 2048k -map 0:1 -map 0:2 -map 0:3 -map 0:4 output.mp4
+
+note: `-vb` little less than specified, e.g. `-vb 2048k` get `1700 kb/s`, put `-vb 2500k` get `2000 kb/s`
+
