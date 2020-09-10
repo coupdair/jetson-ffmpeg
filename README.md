@@ -55,3 +55,11 @@ L4T Multimedia API for ffmpeg
 
 note: `-vb` little less than specified, e.g. `-vb 2048k` get `1700 kb/s`, put `-vb 2500k` get `2000 kb/s`
 
+** speed **
+
+- single FFmpeg: 4.8x (ARM => h264_nvmpi), 3.2x (mpeg2_nvmpi => h264_nvmpi)
+- two    FFmpeg (mpeg2_nvmpi => h264_nvmpi): 2.5x each, i.e. 5.2x real in //
+- three  FFmpeg (mpeg2_nvmpi => h264_nvmpi): 1.9x each, i.e. 5.8x real in //
+- four   FFmpeg (mpeg2_nvmpi => h264_nvmpi): 1.4x each, i.e. 5.9x real in //
+
+
